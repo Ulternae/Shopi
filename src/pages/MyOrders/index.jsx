@@ -12,7 +12,7 @@ const MyOrders = () => {
 
         <div className="grid gap-2">
         {order.map(({ totalPrice, totalProducts, id, date }, index) => (
-          <Link key={index} to={`/my_order/${id}`}>
+          <Link key={index} to={`/Shopi/my_order/${id}`}>
             <OrderCard totalProducts={totalProducts} totalPrice={totalPrice} datePurcharse={date} />
           </Link>
         ))}

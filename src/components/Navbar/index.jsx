@@ -11,41 +11,41 @@ const Navbar = () => {
     <>
       <div className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light h-14 bg-white shadow-lg backdrop-blur-sm">
         <div className="flex items-center gap-3">
-          <NavLink className="font-semibold text-lg" to={"/"}>
+          <NavLink className="font-semibold text-lg" to={"/Shopi/"}>
             Shopi
           </NavLink>
           <NavLink
-            to={"/"}
+            to={"/Shopi/"}
             className={({ isActive }) => (isActive ? style : "")}
           >
             All
           </NavLink>
           <NavLink
-            to={"/shoes"}
+            to={"/Shopi/shoes"}
             className={({ isActive }) => (isActive ? style : "")}
           >
             Shoes
           </NavLink>
           <NavLink
-            to={"/electronics"}
+            to={"/Shopi/electronics"}
             className={({ isActive }) => (isActive ? style : "")}
           >
             Electronics
           </NavLink>
           <NavLink
-            to={"/furnitures"}
+            to={"/Shopi/furnitures"}
             className={({ isActive }) => (isActive ? style : "")}
           >
             Furnitures
           </NavLink>
           <NavLink
-            to={"/toys"}
+            to={"/Shopi/toys"}
             className={({ isActive }) => (isActive ? style : "")}
           >
             Toys
           </NavLink>
           <NavLink
-            to={"/others"}
+            to={"/Shopi/others"}
             className={({ isActive }) => (isActive ? style : "")}
           >
             Others
@@ -54,7 +54,7 @@ const Navbar = () => {
         <div className="flex items-center gap-3">
           <p className="text-black/60">Ulternae</p>
           <NavLink
-            to={"/my_orders"}
+            to={"/Shopi/my_orders"}
             className={({ isActive }) => (isActive ? style : "")}
           >
             My Orders

@@ -35,7 +35,7 @@ const CheckoutSideMenu = () => {
       };
       setOrder([...order, orderToAdd]);
       setCartProducts([]);
-      navigate('/my_order/last');
+      navigate('/Shopi/my_order/last');
       setIsCheckoutSideMenuOpen(false)
     }
   };
@@ -71,7 +71,7 @@ const CheckoutSideMenu = () => {
           <p className="font-medium text-xl">${totalPriceProducts}</p>
         </div>
       </div>
-      <div className="px-6 mb-8" to={"/my_order/last"}>
+      <div className="px-6 mb-8" to={"/Shopi/my_order/last"}>
         <button
           className="w-full bg-gray-950 py-3 text-white rounded shadow-md"
           onClick={() => handleCheckout()}

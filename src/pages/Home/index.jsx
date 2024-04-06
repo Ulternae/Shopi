@@ -15,12 +15,12 @@ const Home = () => {
 
   const location = window.location.pathname;
   const dataItemsProducts = {
-    "/": itemsProductsHome,
-    "/shoes": itemsProductsShoes,
-    "/electronics": itemsProductsElectronics,
-    "/furnitures": itemsProductsFurniture,
-    "/itemsProductsToys": itemsProductsToys,
-    "/others": itemsProductsOthers,
+    "/Shopi/": itemsProductsHome,
+    "/Shopi/shoes": itemsProductsShoes,
+    "/Shopi/electronics": itemsProductsElectronics,
+    "/Shopi/furnitures": itemsProductsFurniture,
+    "/Shopi/itemsProductsToys": itemsProductsToys,
+    "/Shopi/others": itemsProductsOthers,
   };
 
   const dataItem = dataItemsProducts[location] || [];
@@ -53,9 +53,9 @@ const Home = () => {
   return (
     <Layout>
       <h1 className="font-medium text-lg mt-2">
-        {location === "/"
+        {location === "/Shopi/"
           ? "Home"
-          : location.substring(1, 2).toUpperCase() + location.substring(2)}
+          : location.substring(7, 8).toUpperCase() + location.substring(8)}
       </h1>
       <input
         className="rounded-lg shadow-lg border-none w-96 py-1 px-4 bg-gray-200 mt-4 mb-8 focus:border-none focus:outline-none"

@@ -8,17 +8,17 @@ import { ShoppingCartProvider } from '../../context'
 import { CheckoutSideMenu } from '../../components/CheckoutSideMenu'
 const AppRoutes = () => {
   let routes = useRoutes([
-    { path: '/', element: <Home/>},
-    { path: '/shoes', element: <Home/>},
-    { path: '/electronics', element: <Home/>},
-    { path: '/furnitures', element: <Home/>},
-    { path: '/toys', element: <Home/>},
-    { path: '/others', element: <Home/>},
-    { path: '/my_order', element: <MyOrder/>},
-    { path: '/my_order/last', element: <MyOrder/>},
-    { path: '/my_order/:id', element: <MyOrder/>},
-    { path: '/my_orders', element: <MyOrders/>},
-    { path: '/*', element: <NotFound/>},
+    { path: '/Shopi/', element: <Home/>},
+    { path: '/Shopi/shoes', element: <Home/>},
+    { path: '/Shopi/electronics', element: <Home/>},
+    { path: '/Shopi/furnitures', element: <Home/>},
+    { path: '/Shopi/toys', element: <Home/>},
+    { path: '/Shopi/others', element: <Home/>},
+    { path: '/Shopi/my_order', element: <MyOrder/>},
+    { path: '/Shopi/my_order/last', element: <MyOrder/>},
+    { path: '/Shopi/my_order/:id', element: <MyOrder/>},
+    { path: '/Shopi/my_orders', element: <MyOrders/>},
+    { path: '/Shopi/*', element: <NotFound/>},
   ])
   return routes
 }

@@ -7,8 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const MyOrder = () => {
   const { order } = useContext(ShoppingCartContext);
-  const currectPath = window.location.pathname.split('/')[2]
-
+  const currectPath = window.location.pathname.split('/')[3]
   const navigate = useNavigate();
   const idPath = currectPath === 'last' ? order?.slice(-1)[0].id : currectPath
   const orderData = order.find(({id}) => idPath === id)
@@ -21,9 +20,9 @@ const MyOrder = () => {
             className="w-6 h-6 left-0"
             src={left}
             alt="left"
-            onClick={() => navigate("/my_orders")}
+            onClick={() => navigate("/Shopi/my_orders")}
           />
-          <h1>MyOrder</h1>
+          <h1>My Order</h1>
         </div>
         <div className="grid p-4 gap-2 overflow-x-hidden overflow-y-auto scrollbar-custom flex-1">
           {orderData.products.map(({ title, images, price, id }, index) => (
