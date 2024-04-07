@@ -34,6 +34,7 @@ const CheckoutSideMenu = () => {
         id: crypto.randomUUID()
       };
       setOrder([...order, orderToAdd]);
+      localStorage.setItem('order', JSON.stringify([...order, orderToAdd]))
       setCartProducts([]);
       navigate('/Shopi/my_order/last');
       setIsCheckoutSideMenuOpen(false)

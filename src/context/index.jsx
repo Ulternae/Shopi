@@ -1,98 +1,59 @@
-import { createContext, useEffect, useState, useMemo } from "react";
-
-const defaultInfoProductToShow = {
-  title: "",
-  price: "",
-  description: "",
-  images: [],
-};
+import { createContext } from "react";
+import { ProductsShopping} from "./ProductsShopping";
+import { ShoppingCard } from "./ShoppingCard";
+import { UserStorage } from "./UserStorage"; 
 
 const ShoppingCartContext = createContext();
 const ProductsShoppingContext = createContext();
+const UserStorageContext = createContext()
 
-const ShoppingCartProvider = ({ children }) => {
-  // ProductsShoppingContext
-  const [itemsProductsShoppingContext, setItemsProductsShoppingContext] = useState(null);
-  useEffect(() => {
-    fetch("https://api.escuelajs.co/api/v1/products")
-    .then((response) => response.json())
-    .then((data) => setItemsProductsShoppingContext(data));
-  }, [setItemsProductsShoppingContext]);
+const ContextGlobal = ({ children }) => {
   
-  // useMemo
-  const itemsProductsHome = useMemo(() => 
-  itemsProductsShoppingContext || [],
-  [itemsProductsShoppingContext]
-);
-
-const itemsProductsElectronics = useMemo(() => 
-itemsProductsHome.filter(({ category }) => category.name === "Electronics"), 
-[itemsProductsHome]
-);
-
-const itemsProductsShoes = useMemo(() => 
-itemsProductsHome.filter(({ category }) => category.name === "Shoes"), 
-[itemsProductsHome]
-);
-
-const itemsProductsFurniture = useMemo(() => 
-itemsProductsHome.filter(({ category }) => category.name === "Furniture"), 
-[itemsProductsHome]
-);
-
-const itemsProductsToys = useMemo(() => 
-  itemsProductsHome.filter(({ category }) => category.name === "Toys"), 
-  [itemsProductsHome]
-);
-
-const itemsProductsOthers = useMemo(() => 
-  itemsProductsHome.filter(({ category }) =>
-    category.name !== "Electronics" &&
-    category.name !== "Shoes" &&
-    category.name !== "Furniture" &&
-    category.name !== "Toys"
-  ), 
-  [itemsProductsHome]
-);
- 
-
-  // ShoppingCard
-  const [cartProducts, setCartProducts] = useState([]);
-  const [order, setOrder] = useState([])
-  // Product Detail
-  const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
-  const [productToShow, setProductToShow] = useState(defaultInfoProductToShow);
-  // Checkout side menu
-  const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false);
-
+  const PSD = {...ProductsShopping()}   // ProductsShoppingData
+  const SCD = {...ShoppingCard()}       // ShoppingCardData
+  const USD = {...UserStorage()}        // UserStorageData
+  
   return (
     <ShoppingCartContext.Provider
       value={{
-        order,
-        setOrder,
-        isProductDetailOpen,
-        setIsProductDetailOpen,
-        productToShow,
-        setProductToShow,
-        cartProducts,
-        setCartProducts,
-        isCheckoutSideMenuOpen,
-        setIsCheckoutSideMenuOpen,
+        order : SCD.order,
+        setOrder : SCD.setOrder,
+        isProductDetailOpen : SCD.isProductDetailOpen,
+        setIsProductDetailOpen : SCD.setIsProductDetailOpen,
+        productToShow : SCD.productToShow,
+        setProductToShow : SCD.setProductToShow,
+        cartProducts : SCD.cartProducts,
+        setCartProducts : SCD.setCartProducts,
+        isCheckoutSideMenuOpen : SCD.isCheckoutSideMenuOpen,
+        setIsCheckoutSideMenuOpen : SCD.setIsCheckoutSideMenuOpen,
       }}
     >
       <ProductsShoppingContext.Provider
         value={{
-          itemsProductsHome,
-          itemsProductsElectronics,
-          itemsProductsShoes,
-          itemsProductsFurniture,
-          itemsProductsToys,
-          itemsProductsOthers,
+          loading: PSD.loading,
+          setLoading: PSD.setLoading,
+          itemsProductsHome : PSD.itemsProductsHome,
+          itemsProductsElectronics : PSD.itemsProductsElectronics,
+          itemsProductsShoes : PSD.itemsProductsShoes,
+          itemsProductsFurniture : PSD.itemsProductsFurniture,
+          itemsProductsToys : PSD.itemsProductsToys,
+          itemsProductsOthers : PSD.itemsProductsOthers,
         }}
       >
-        {children}
+        <UserStorageContext.Provider
+          value={{
+            isNewUser: USD.isNewUser,
+            setNewUser: USD.setNewUser,
+            isSignInUser: USD.isSignInUser,
+            setSignInUser : USD.setSignInUser,
+            setAccountUser : USD.setAccountUser,
+            accountUser: USD.accountUser,
+          }}
+        >
+          {children}
+        </UserStorageContext.Provider>
       </ProductsShoppingContext.Provider>
     </ShoppingCartContext.Provider>
   );
 };
-export { ShoppingCartContext, ShoppingCartProvider, ProductsShoppingContext };
+export { ContextGlobal, ShoppingCartContext, ProductsShoppingContext , UserStorageContext };
