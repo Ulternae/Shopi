@@ -77,7 +77,7 @@ Contiene las páginas de la aplicación, cada una representada por un componente
 
 Provee utilidades comunes a lo largo del proyecto:
 
--   `index.js`: Proporciona utilidades como funciones para generar fechas aleatorias.o.
+-   `index.js`: Proporciona utilidades como funciones para generar fechas aleatorias.
 
 ## Vista General de la Interfaz de Usuario
 
